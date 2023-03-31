@@ -9,12 +9,36 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Weather App</h1>
+			<h1>- Weather App -</h1>
 
 			<label for="place">Your place on Earth</label>
 			<input type="text" name="place" id="place" />
-            <p>Searched place</p>
-            <p id="search-place"></p>
+			<div class="category">Searched place</div>
+			<div>
+				<span id="search-place"></span>
+			</div>
+			<div class="category">Current conditions</div>
+			<div>
+				<span id="current-condition"></span>
+			</div>
+            <div class="category">Clouds</div>
+			<div>
+                <progress id="clouds" max="100" value="70"></progress>
+			</div>
+			<div class="category">Temperature</div>
+			<div>
+				<span id="temp"></span>
+			</div>
+		
+            <div class="category">Wind</div>
+			<div>
+				<span id="wind"></span>
+			</div>
+		
+            <div class="category">Pressure</div>
+			<div>
+				<span id="pressure"></span>
+			</div>
 		</div>
 		<script src="./main.js"></script>
 	</body>

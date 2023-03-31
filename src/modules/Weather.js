@@ -27,28 +27,47 @@ class Weather {
 
 			const gifResponse = await gifFetch.json();
 			console.log(gifResponse.data.length);
-			this.renderGif(gifResponse)
-
+			this.renderGif(gifResponse);
 		} catch (error) {
 			//handle array < 50
 			console.log(error);
 		}
 	}
 
-	renderData(data) {
-		const location = data.location.name;
-		document.querySelector('#search-place').textContent = location;
+	renderData(weatherData) {
+		const {
+			location: { name, country },
+			current: {
+				condition: { text },
+				cloud,
+				temp_c,
+				temp_f,
+				wind_kph,
+				wind_mph,
+				pressure_mb,
+				pressure_in,
+			},
+		} = weatherData;
+
+		document.querySelector(
+			'#search-place'
+		).textContent = `${name} (${country})`;
+		document.querySelector('#current-condition').textContent = text;
+		document.querySelector('#clouds').value = cloud;
+		document.querySelector('#temp').textContent = `${temp_c} C`;
+		document.querySelector('#wind').textContent = `${wind_kph} KPH`;
+		document.querySelector('#pressure').textContent = `${pressure_mb} MB`;
 	}
 
 	renderGif(gifResponse) {
-        //check how many gifs there are
-        const arrLength = gifResponse.data.length;
-        // draw random gif
-        const randomNumArrLength = Math.floor(Math.random() * (arrLength + 1));
-        // console.log(gifResponse.data[randomNumArrLength].images.original.url);
-        //change bg image
-        document.body.style.backgroundImage = `url(${gifResponse.data[randomNumArrLength].images.original.url})`;
-    }
+		//check how many gifs there are
+		const arrLength = gifResponse.data.length;
+		// draw random gif
+		const randomNumArrLength = Math.floor(Math.random() * (arrLength + 1));
+		// console.log(gifResponse.data[randomNumArrLength].images.original.url);
+		//change bg image
+		document.body.style.backgroundImage = `url(${gifResponse.data[randomNumArrLength].images.original.url})`;
+	}
 }
 
 export default Weather;
