@@ -16,14 +16,14 @@ body {
     background-size: cover;
     overflow: hidden;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: start;
 
 }
 
 .container {
     margin-top: 2rem;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     background-color: rgba(231, 231, 231, 0.5);
     /* height: 80vh; */
     width: 40vw;

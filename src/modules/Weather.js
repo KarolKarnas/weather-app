@@ -8,9 +8,8 @@ class Weather {
 			);
 			const weatherData = await weather.json();
 			this.renderData(weatherData);
-			console.log(weatherData);
+			// console.log(weatherData);
 			//--------- GIF ---------
-
 			const currentConditionText = weatherData.current.condition.text;
 			this.getGif(currentConditionText);
 		} catch (error) {
@@ -26,7 +25,7 @@ class Weather {
 			);
 
 			const gifResponse = await gifFetch.json();
-			console.log(gifResponse.data.length);
+			// console.log(gifResponse.data.length);
 			this.renderGif(gifResponse);
 		} catch (error) {
 			//handle array < 50
@@ -54,9 +53,14 @@ class Weather {
 		).textContent = `${name} (${country})`;
 		document.querySelector('#current-condition').textContent = text;
 		document.querySelector('#clouds').value = cloud;
-		document.querySelector('#temp').textContent = `${temp_c} C`;
-		document.querySelector('#wind').textContent = `${wind_kph} KPH`;
-		document.querySelector('#pressure').textContent = `${pressure_mb} MB`;
+
+		document.querySelector('#temp-c').textContent = `${temp_c} C`;
+		document.querySelector('#wind-km').textContent = `${wind_kph} KPH`;
+		document.querySelector('#pressure-mb').textContent = `${pressure_mb} MB`;
+
+		document.querySelector('#temp-f').textContent = `${temp_f} F`;
+		document.querySelector('#wind-m').textContent = `${wind_mph} MPH`;
+		document.querySelector('#pressure-in').textContent = `${pressure_in} IN`;
 	}
 
 	renderGif(gifResponse) {
