@@ -8,7 +8,6 @@ class Weather {
 			);
 			const weatherData = await weather.json();
 			this.renderData(weatherData);
-			// console.log(weatherData);
 			//--------- GIF ---------
 			const currentConditionText = weatherData.current.condition.text;
 			this.getGif(currentConditionText);
@@ -25,7 +24,6 @@ class Weather {
 			);
 
 			const gifResponse = await gifFetch.json();
-			// console.log(gifResponse.data.length);
 			this.renderGif(gifResponse);
 		} catch (error) {
 			//handle array < 50
@@ -68,7 +66,6 @@ class Weather {
 		const arrLength = gifResponse.data.length;
 		// draw random gif
 		const randomNumArrLength = Math.floor(Math.random() * (arrLength + 1));
-		// console.log(gifResponse.data[randomNumArrLength].images.original.url);
 		//change bg image
 		document.body.style.backgroundImage = `url(${gifResponse.data[randomNumArrLength].images.original.url})`;
 	}
